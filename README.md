@@ -2,3 +2,6 @@ zVoting System is an realtime,intelligent and userfriendly voting system for Ele
 
 Here the system mainly uses Google Cloud platform in managing databases,and keeping data secure.
 Here the ideamart api is used to send realtime notification to the voters as well as realtime,timed notifications to the users on demand.
+
+Users who will subscribe to this application should type REG zvote and SEND the SMS to 77007
+To unsubscribe, type UNREG zvote and send to 77007
