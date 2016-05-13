@@ -5,3 +5,8 @@ Here the ideamart api is used to send realtime notification to the voters as wel
 
 Users who will subscribe to this application should type REG zvote and SEND the SMS to 77007
 To unsubscribe, type UNREG zvote and send to 77007
+
+In order for a voter to access the System he/she will need two type of authentication types
+
+1.NIC no
+2.PIN no(Send to the voter before hand in a known secure method).
