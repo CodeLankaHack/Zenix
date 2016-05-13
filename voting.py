@@ -7,7 +7,7 @@ import os
 db = MySQLdb.connect("173.194.105.40","amila","rajans12","zvote" )
 
 # prepare a cursor object using cursor() method
-cursor = db.cursor()
+cur = db.cursor()
 
 # the block size for the cipher object; must be 16 per FIPS-197
 BLOCK_SIZE = 16
@@ -35,30 +35,36 @@ nic = raw_input('Enter your NIC number: ')
 pin = int(raw_input('Enter your PIN number: '))
 vote = raw_input('Enter your vote: ')
 
-cursor.execute("SELECT nic, pin FROM tbl_users")
-row = cursor.fetchone()
+cur.execute("SELECT nic, pin, voted FROM tbl_users")
+
+row = cur.fetchone()
 while row is not None:
-	if (row[0] == nic and row[1] == pin):	# check whether the NIC and unique PIN is valid
-   		print 'Valid user, Vote accepted.'
-
-		# encode the NIC number
+	#print row[0], row[1]
+	
+	if (row[0] == nic and row[1] == pin and row[2] == 0):
+		valid = 1
+		cur.execute("UPDATE tbl_users SET voted=1 WHERE pin=%d"% pin)
 		encoded = EncodeAES(cipher, nic)
-
+		
 		try:
    			# Execute the SQL command
-   			cursor.execute("INSERT INTO tbl_votes(authkey,vote) VALUES(%s,%s)", (encoded,vote))
+   			cur.execute("INSERT INTO tbl_votes(authkey,vote) VALUES(%s,%s)", (encoded,vote))
    			# Commit your changes in the database
    			db.commit()
 		except:
    			# Rollback in case there is any error
-   			db.rollback()
+			db.rollback()
 
-    	#row = cursor.fetchone()
 		break
 	else:
-		print 'Invalid user, Vote rejected.'
-		break
+		valid = 0
+		
+	row = cur.fetchone()
 
-cursor.close()
-# disconnect from server
+if valid == 1:
+	print 'Valid user, Vote accepted'
+elif valid == 0:
+	print 'Invalid user, Vote rejected'
+	 	
+cur.close()
 db.close()
