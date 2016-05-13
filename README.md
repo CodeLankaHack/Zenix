@@ -13,3 +13,5 @@ In order for a voter to access the System he/she will need two types of authenti
 
 If that perticular voter is eligible for voting, their details are aleady in the database. At the security level_1 it's checked the above two authenticationas. Then the voter get privilege to use his/her vote.
 In the next security level the system will check whether this perticular voter has used his/her vote.
+
+Demo of the voting login:https://storage.googleapis.com/natural-bison-130906.appspot.com/index.html
