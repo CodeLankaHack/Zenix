@@ -7,7 +7,9 @@ Users who will subscribe to this application should type 'REG\<space\>zvote' and
 To unsubscribe, type UNREG zvote and send to 77007
 
 In order for a voter to access the System he/she will need two types of authentications
-\n\n\t1.NIC Number\n\t2.PIN Number (Send to the voter before hand in a known secure method).
+
+\t1.NIC Number
+\t2.PIN Number (Send to the voter before hand in a known secure method).
 
 If that perticular voter is eligible for voting, their details are aleady in the database. At the security level_1 it's checked the above two authenticationas. Then the voter get privilege to use his/her vote.
 In the next security level the system will check whether this perticular voter has used his/her vote.
